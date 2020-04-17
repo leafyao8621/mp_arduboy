@@ -1,8 +1,7 @@
 #include <Arduboy2.h>
 #include <ArduboyTones.h>
-
 #define MAX 8
-#define MAX_IMPLEMENTED 2
+#define MAX_IMPLEMENTED 3
 #define STATE_SELECTION 0
 #define STATE_PLAYING 1
 
@@ -19,7 +18,8 @@ char buf[6];
 
 const char *titles[MAX] = {
   "Little Star",
-  "KyouNoHiHaSaYouNaRa"
+  "KyouNoHiHaSaYouNaRa",
+  "MiraiNoBokura"
 };
 
 const uint16_t little_star[] PROGMEM= {
@@ -68,7 +68,7 @@ const uint16_t little_star[] PROGMEM= {
   TONES_END
 };
 
-const uint16_t kyou[] PROGMEM= {
+const uint16_t kyou[] PROGMEM = {
   NOTE_G5, 1050,
   NOTE_E5, 350,
   NOTE_F5, 350,
@@ -109,9 +109,65 @@ const uint16_t kyou[] PROGMEM= {
   NOTE_C5, 2500,
   TONES_END
 };
+
+const uint16_t mirai[] PROGMEM = {
+  NOTE_C5, 900,
+  NOTE_F5, 150,
+  NOTE_F5, 750,
+  NOTE_E5, 300,
+  NOTE_D5, 300,
+  NOTE_C5, 450,
+  NOTE_G5, 150,
+  NOTE_REST, 300,
+  NOTE_F5, 900,
+  NOTE_B4, 300,
+  NOTE_C5, 300,
+  NOTE_D5, 300,
+  NOTE_E5, 150,
+  NOTE_F5, 750,
+  NOTE_A5, 600,
+  NOTE_G5, 300,
+  NOTE_F5, 150,
+  NOTE_F5, 2550,
+  NOTE_C5, 300,
+  NOTE_F5, 150,
+  NOTE_E5, 300, 
+  NOTE_F5, 300,
+  NOTE_D5, 300,
+  NOTE_E5, 300,
+  NOTE_F5, 300,
+  NOTE_D5, 150,
+  NOTE_E5, 150,
+  NOTE_F5, 150,
+  NOTE_D5, 300,
+  NOTE_REST, 150,
+  NOTE_E5, 150,
+  NOTE_REST, 150,
+  NOTE_F5, 150,
+  NOTE_REST, 150,
+  NOTE_G5, 1050,
+  NOTE_REST, 300,
+  NOTE_C5, 300,
+  NOTE_D5, 150,
+  NOTE_E5, 750,
+  NOTE_C5, 300,
+  NOTE_D5, 150,
+  NOTE_E5, 450,
+  NOTE_F5, 150,
+  NOTE_G5, 150,
+  NOTE_A5, 600,
+  NOTE_C5, 300,
+  NOTE_A5, 300,
+  NOTE_G5, 300,
+  NOTE_F5, 150,
+  NOTE_E5, 750,
+  TONES_END
+};
+
 const uint16_t *songs[MAX] = {
   little_star,
-  kyou
+  kyou,
+  (const uint16_t*)mirai
 };
 
 void selection_screen() {
@@ -130,6 +186,7 @@ void selection_screen() {
   arduboy.setCursor(6, sel << 3);
   arduboy.print('<');
 }
+
 
 void setup() {
   // put your setup code here, to run once:
